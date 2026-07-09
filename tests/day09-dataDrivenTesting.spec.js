@@ -1,19 +1,10 @@
 //Day 9 - What is Data-Driven Testing?
 
 import { test, expect } from "@playwright/test";
+import loginData from "../test-data/loginData.json"
 
 const LOGIN_URL = "https://practicetestautomation.com/practice-test-login/"
 
-const loginData = [
-    {
-        username: "student",
-        password: "Password123"
-    },
-    {
-        username: "pogi",
-        password: "WrongPassword"
-    }
-]
 
 for (const user of loginData) {
 
