@@ -4,20 +4,27 @@ import { test, expect } from "@playwright/test";
 import loginData from "../test-data/loginData.json"
 import { LoginPage } from "../pages/LoginPage";
 
-const LOGIN_URL = "https://practicetestautomation.com/practice-test-login/"
-
-
 test.describe("Login Page", () => {
+    let loginPage;
+
+    test.beforeEach(async ({ page }) => {
+        loginPage = new LoginPage(page);
+        await loginPage.goto();
+    })
 
     test("Valid Login", async ({ page }) => {
 
-        const loginPage = new LoginPage(page);
-
-        await page.goto(LOGIN_URL);
-
         await loginPage.login("student", "Password123");
+        await loginPage.verifySuccessfulLogin();
 
     });
+
+    test("Invalid Login", async ({ page }) => {
+
+        await loginPage.login("student", "Passw");
+        await loginPage.verifyInvalidLogin();
+
+    })
 })
 
 
