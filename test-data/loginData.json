@@ -1,14 +1,22 @@
 [
     {
         "username": "student",
-        "password": "Password123"
+        "password": "Password123",
+        "expected": "success"
     },
     {
         "username": "pogi",
-        "password": "WrongPassword"
+        "password": "WrongPassword",
+        "expected": "error"
     },
     {
         "username": "admin",
-        "password": "Admin123"
+        "password": "Admin123",
+        "expected": "error"
+    },
+    {
+        "username": "admin123",
+        "password": "Admin123",
+        "expected": "error"
     }
 ]

@@ -12,22 +12,21 @@ test.describe("Login Page", () => {
         await loginPage.goto();
     })
 
-    test("Valid Login", async ({ page }) => {
+    for (const user of loginData) {
+        test(`Login  (${user.username} - ${user.expected})`, async ({ page }) => {
 
-        await loginPage.login("student", "Password123");
-        await loginPage.verifySuccessfulLogin();
+            await loginPage.login(user.username, user.password);
 
-    });
+            if (user.expected === "success") {
+                await loginPage.verifySuccessfulLogin();
 
-    test("Invalid Login", async ({ page }) => {
+            } else {
+                await loginPage.verifyInvalidLogin();
+            }
+        })
+    }
 
-        await loginPage.login("student", "Passw");
-        await loginPage.verifyInvalidLogin();
-
-    })
 })
-
-
 
 
 // test("Valid Login", async ({ page }) => {
