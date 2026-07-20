@@ -5,7 +5,7 @@
         "expected": "success"
     },
     {
-        "username": "pogi",
+        "username": "student",
         "password": "WrongPassword",
         "expected": "error"
     },

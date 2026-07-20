@@ -19,7 +19,6 @@ test.describe("Login Page", () => {
 
             if (user.expected === "success") {
                 await loginPage.verifySuccessfulLogin();
-
             } else {
                 await loginPage.verifyInvalidLogin();
             }
