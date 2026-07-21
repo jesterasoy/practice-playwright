@@ -4,6 +4,8 @@ import { expect } from "@playwright/test";
 import { test } from "../fixtures/pages";
 import loginData from "../test-data/loginData.json";
 import { LoginPage } from "../pages/LoginPage";
+import { dashboardPage } from "../pages/dashboardPage";
+import { cartPage } from "../pages/cartPage";
 
 test.describe("Login Page", () => {
   for (const user of loginData) {
@@ -19,6 +21,10 @@ test.describe("Login Page", () => {
       }
     });
   }
+
+  test("Buy Product", async ({ loginPage, dashboardPage, cartPage }) => {
+    
+  });
 });
 
 // test("Valid Login", async ({ page }) => {

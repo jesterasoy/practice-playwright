@@ -7,4 +7,14 @@ export const test = base.extend({
     await loginPage.goto();
     await use(loginPage);
   },
+  dashboardPage: async ({ page }, use) => {
+    const dashboardPage = new DashboardPage(page);
+    await dashboardPage.goto();
+    await use(dashboardPage);
+  },
+  cartPage: async ({ page }, use) => {
+    const cartPage = new CartPage(page);
+    await cartPage.goto();
+    await use(cartPage);
+  },
 });
