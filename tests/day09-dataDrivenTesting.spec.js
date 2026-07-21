@@ -21,22 +21,4 @@ test.describe("Login Page", () => {
       }
     });
   }
-
-  test("Buy Product", async ({ loginPage, dashboardPage, cartPage }) => {
-    
-  });
 });
-
-// test("Valid Login", async ({ page }) => {
-
-//     await page.goto(LOGIN_URL);
-
-//     const username = page.getByLabel("Username");
-//     const password = page.getByLabel("Password");
-//     const submit = page.getByRole("button", { name: "Submit" })
-
-//     await username.fill(loginData[0].username)
-//     await password.fill(loginData[0].password)
-//     await submit.click();
-
-// })
