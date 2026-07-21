@@ -1,32 +1,25 @@
 //Day 9 - What is Data-Driven Testing?
 
-import { test, expect } from "@playwright/test";
-import loginData from "../test-data/loginData.json"
+import { expect } from "@playwright/test";
+import { test } from "../fixtures/pages";
+import loginData from "../test-data/loginData.json";
 import { LoginPage } from "../pages/LoginPage";
 
 test.describe("Login Page", () => {
-    let loginPage;
+  for (const user of loginData) {
+    test(`Login  (${user.username} - ${user.expected})`, async ({
+      loginPage,
+    }) => {
+      await loginPage.login(user.username, user.password);
 
-    test.beforeEach(async ({ page }) => {
-        loginPage = new LoginPage(page);
-        await loginPage.goto();
-    })
-
-    for (const user of loginData) {
-        test(`Login  (${user.username} - ${user.expected})`, async ({ page }) => {
-
-            await loginPage.login(user.username, user.password);
-
-            if (user.expected === "success") {
-                await loginPage.verifySuccessfulLogin();
-            } else {
-                await loginPage.verifyInvalidLogin();
-            }
-        })
-    }
-
-})
-
+      if (user.expected === "success") {
+        await loginPage.verifySuccessfulLogin();
+      } else {
+        await loginPage.verifyInvalidLogin();
+      }
+    });
+  }
+});
 
 // test("Valid Login", async ({ page }) => {
 
